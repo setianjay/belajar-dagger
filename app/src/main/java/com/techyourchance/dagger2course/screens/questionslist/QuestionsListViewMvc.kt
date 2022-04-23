@@ -7,45 +7,40 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import androidx.viewbinding.ViewBinding
 import com.techyourchance.dagger2course.R
 import com.techyourchance.dagger2course.databinding.LayoutQuestionsListBinding
 import com.techyourchance.dagger2course.questions.Question
+import com.techyourchance.dagger2course.screens.common.viewmvc.BaseViewMvc
 import kotlinx.android.synthetic.main.layout_questions_list.view.*
-import java.util.ArrayList
 
 class QuestionsListViewMvc(
     layoutInflater: LayoutInflater,
     parent: ViewGroup?
+) : BaseViewMvc<QuestionsListViewMvc.Listener>(
+    LayoutQuestionsListBinding.inflate(layoutInflater, parent, false)
 ) {
     interface Listener {
         fun onRefreshClicked()
         fun onQuestionClicked(question: Question)
     }
 
-    private val listeners = HashSet<Listener>()
-
-    private val binding: ViewBinding =
-        LayoutQuestionsListBinding.inflate(layoutInflater, parent, false)
-    val rootView = binding.root
-
     private val recyclerView: RecyclerView = rootView.recycler
     private val swipeRefreshLayout: SwipeRefreshLayout = rootView.swipeRefresh
     private val questionsAdapter: QuestionsAdapter = QuestionsAdapter { question: Question ->
-        for (listener in listeners){
+        for (listener in listeners) {
             listener.onQuestionClicked(question)
         }
     }
 
     init {
         recyclerView.apply {
-            layoutManager = LinearLayoutManager(rootView.context)
+            layoutManager = LinearLayoutManager(context)
             adapter = questionsAdapter
             setHasFixedSize(true)
         }
 
         swipeRefreshLayout.setOnRefreshListener {
-            for (listener in listeners){
+            for (listener in listeners) {
                 listener.onRefreshClicked()
             }
         }
@@ -61,15 +56,7 @@ class QuestionsListViewMvc(
         }
     }
 
-    fun registerListener(listener: Listener){
-        listeners.add(listener)
-    }
-
-    fun unregisterListener(listener: Listener){
-        listeners.remove(listener)
-    }
-
-    fun bindData(questions: List<Question>) {
+    fun bindQuestions(questions: List<Question>) {
         questionsAdapter.bindData(questions)
     }
 

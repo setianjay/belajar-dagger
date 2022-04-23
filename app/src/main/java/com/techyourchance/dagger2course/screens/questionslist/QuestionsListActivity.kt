@@ -60,7 +60,7 @@ class QuestionsListActivity : AppCompatActivity(), QuestionsListViewMvc.Listener
             try {
                 val response = stackoverflowApi.lastActiveQuestions(20)
                 if (response.isSuccessful && response.body() != null) {
-                    viewMvc.bindData(response.body()!!.questions)
+                    viewMvc.bindQuestions(response.body()!!.questions)
                     isDataLoaded = true
                 } else {
                     onFetchFailed()

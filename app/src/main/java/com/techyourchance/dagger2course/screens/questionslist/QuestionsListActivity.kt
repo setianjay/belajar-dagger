@@ -7,7 +7,7 @@ import com.techyourchance.dagger2course.data.usecase.FetchQuestionsUseCase
 import com.techyourchance.dagger2course.data.usecase.FetchQuestionsUseCaseImpl
 import com.techyourchance.dagger2course.questions.Question
 import com.techyourchance.dagger2course.screens.common.dialogs.DialogsNavigator
-import com.techyourchance.dagger2course.screens.questiondetails.QuestionDetailsActivity
+import com.techyourchance.dagger2course.screens.common.screens.ScreensNavigator
 import kotlinx.coroutines.*
 
 class QuestionsListActivity : AppCompatActivity(), QuestionsListViewMvc.Listener {
@@ -16,6 +16,7 @@ class QuestionsListActivity : AppCompatActivity(), QuestionsListViewMvc.Listener
     private lateinit var viewMvc: QuestionsListViewMvc
     private lateinit var fetchQuestionsUseCase: FetchQuestionsUseCase
     private lateinit var dialogsNavigator: DialogsNavigator
+    private lateinit var screensNavigator: ScreensNavigator
 
     private var isDataLoaded = false
 
@@ -25,6 +26,7 @@ class QuestionsListActivity : AppCompatActivity(), QuestionsListViewMvc.Listener
         setContentView(viewMvc.rootView)
         fetchQuestionsUseCase = FetchQuestionsUseCaseImpl()
         dialogsNavigator = DialogsNavigator(supportFragmentManager)
+        screensNavigator = ScreensNavigator(this)
     }
 
     override fun onStart() {
@@ -40,7 +42,7 @@ class QuestionsListActivity : AppCompatActivity(), QuestionsListViewMvc.Listener
     }
 
     override fun onQuestionClicked(question: Question) {
-        QuestionDetailsActivity.start(this, questionId = question.id)
+        screensNavigator.toDetailsQuestion(question.id)
     }
 
     override fun onStop() {

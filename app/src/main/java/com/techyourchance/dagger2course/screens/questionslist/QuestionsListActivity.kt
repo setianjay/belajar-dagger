@@ -2,6 +2,7 @@ package com.techyourchance.dagger2course.screens.questionslist
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.techyourchance.dagger2course.MyApplication
 import com.techyourchance.dagger2course.data.Result
 import com.techyourchance.dagger2course.data.usecase.FetchQuestionsUseCase
 import com.techyourchance.dagger2course.data.usecase.FetchQuestionsUseCaseImpl
@@ -24,7 +25,7 @@ class QuestionsListActivity : AppCompatActivity(), QuestionsListViewMvc.Listener
         super.onCreate(savedInstanceState)
         viewMvc = QuestionsListViewMvc(layoutInflater, null)
         setContentView(viewMvc.rootView)
-        fetchQuestionsUseCase = FetchQuestionsUseCaseImpl()
+        fetchQuestionsUseCase = FetchQuestionsUseCaseImpl((application as MyApplication).stackoverflowApi)
         dialogsNavigator = DialogsNavigator(supportFragmentManager)
         screensNavigator = ScreensNavigator(this)
     }

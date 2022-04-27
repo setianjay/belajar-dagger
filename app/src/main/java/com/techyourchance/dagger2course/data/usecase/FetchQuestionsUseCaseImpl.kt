@@ -1,6 +1,5 @@
 package com.techyourchance.dagger2course.data.usecase
 
-import com.techyourchance.dagger2course.Constants
 import com.techyourchance.dagger2course.data.Result
 import com.techyourchance.dagger2course.networking.StackoverflowApi
 import com.techyourchance.dagger2course.questions.Question
@@ -8,17 +7,8 @@ import com.techyourchance.dagger2course.questions.QuestionWithBody
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
-class FetchQuestionsUseCaseImpl: FetchQuestionsUseCase {
-    private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl(Constants.BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-    private val stackoverflowApi: StackoverflowApi = retrofit.create(StackoverflowApi::class.java)
-
+class FetchQuestionsUseCaseImpl(private val stackoverflowApi: StackoverflowApi): FetchQuestionsUseCase {
 
     override suspend fun fetchLatestQuestions(): Result<List<Question>> {
         return withContext(Dispatchers.IO){

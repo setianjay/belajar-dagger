@@ -27,7 +27,7 @@ class QuestionDetailsActivity : AppCompatActivity(), QuestionDetailsViewMvc.List
         viewMvc = QuestionDetailsViewMvc(layoutInflater, null)
         setContentView(viewMvc.rootView)
 
-        fetchQuestionsUseCase = FetchQuestionsUseCaseImpl((application as MyApplication).stackoverflowApi)
+        fetchQuestionsUseCase = (application as MyApplication).fetchQuestionsUseCase
         dialogsNavigator = DialogsNavigator(supportFragmentManager)
         screensNavigator = ScreensNavigator(this)
 

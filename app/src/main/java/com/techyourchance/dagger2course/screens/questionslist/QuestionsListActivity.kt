@@ -24,7 +24,7 @@ class QuestionsListActivity : BaseActivity(), QuestionsListViewMvc.Listener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewMvc = QuestionsListViewMvc(layoutInflater, null)
+        viewMvc = compositionRoot.viewMvcFactory.newQuestionsListViewMvc(null)
         setContentView(viewMvc.rootView)
         fetchQuestionsUseCase = compositionRoot.fetchQuestionsUseCase
         dialogsNavigator = compositionRoot.dialogsNavigator

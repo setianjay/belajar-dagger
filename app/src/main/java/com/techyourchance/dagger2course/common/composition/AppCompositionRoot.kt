@@ -7,6 +7,9 @@ import com.techyourchance.dagger2course.networking.StackoverflowApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * this class provide service application scope
+ * */
 @UiThread
 class AppCompositionRoot {
 

@@ -3,6 +3,7 @@ package com.techyourchance.dagger2course.screens.questiondetails
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import com.techyourchance.dagger2course.common.composition.dependencyinjection.Service
 import com.techyourchance.dagger2course.data.Result
 import com.techyourchance.dagger2course.data.usecase.FetchQuestionsUseCase
 import com.techyourchance.dagger2course.screens.common.activities.BaseActivity
@@ -16,10 +17,10 @@ class QuestionDetailsActivity : BaseActivity(), QuestionDetailsViewMvc.Listener 
     private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
     private lateinit var viewMvc: QuestionDetailsViewMvc
     private lateinit var questionId: String
-    lateinit var dialogsNavigator: DialogsNavigator
-    lateinit var fetchQuestionsUseCase: FetchQuestionsUseCase
-    lateinit var screensNavigator: ScreensNavigator
-    lateinit var viewMvcFactory: ViewMvcFactory
+    @field:Service private lateinit var dialogsNavigator: DialogsNavigator
+    @field:Service private lateinit var fetchQuestionsUseCase: FetchQuestionsUseCase
+    @field:Service private lateinit var screensNavigator: ScreensNavigator
+    @field:Service private lateinit var viewMvcFactory: ViewMvcFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         injector.inject(this)

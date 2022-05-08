@@ -9,12 +9,11 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.techyourchance.dagger2course.databinding.LayoutQuestionDetailsBinding
 import com.techyourchance.dagger2course.screens.common.toolbar.MyToolbar
 import com.techyourchance.dagger2course.screens.common.viewmvc.BaseViewMvc
-import kotlinx.android.synthetic.main.layout_question_details.view.*
 
 class QuestionDetailsViewMvc(
     layoutInflater: LayoutInflater,
     parent: ViewGroup?
-): BaseViewMvc<QuestionDetailsViewMvc.Listener>(
+): BaseViewMvc<LayoutQuestionDetailsBinding,QuestionDetailsViewMvc.Listener>(
     LayoutQuestionDetailsBinding.inflate(layoutInflater, parent, false)
 ) {
 
@@ -22,9 +21,9 @@ class QuestionDetailsViewMvc(
         fun onNavigateBackClicked()
     }
 
-    private val myToolbar: MyToolbar = rootView.toolbar
-    private val swiperRefreshLayout: SwipeRefreshLayout = rootView.swipeRefresh
-    private val txtQuestionBody: TextView = rootView.txt_question_body
+    private val myToolbar: MyToolbar = binding.toolbar
+    private val swiperRefreshLayout: SwipeRefreshLayout = binding.swipeRefresh
+    private val txtQuestionBody: TextView = binding.txtQuestionBody
 
     init {
         myToolbar.setNavigateUpListener {

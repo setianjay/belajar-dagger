@@ -4,8 +4,8 @@ import android.content.Context
 import android.view.View
 import androidx.viewbinding.ViewBinding
 
-open class BaseViewMvc<LISTENER_TYPE>(
-   binding: ViewBinding
+open class BaseViewMvc<LAYOUT_TYPE : ViewBinding, LISTENER_TYPE>(
+    protected val binding: LAYOUT_TYPE
 ) {
 
     val rootView: View = binding.root

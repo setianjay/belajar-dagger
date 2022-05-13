@@ -4,7 +4,7 @@ import com.techyourchance.dagger2course.screens.questiondetails.QuestionDetailsA
 import com.techyourchance.dagger2course.screens.questionslist.QuestionsListActivity
 import dagger.Subcomponent
 
-@Subcomponent(modules = [PresentationModule::class])
+@Subcomponent(modules = [PresentationModule::class, UseCaseModule::class])
 @PresentationScope
 interface PresentationComponent {
 

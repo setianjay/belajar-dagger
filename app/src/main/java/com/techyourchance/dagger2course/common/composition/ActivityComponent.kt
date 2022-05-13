@@ -6,5 +6,8 @@ import dagger.Subcomponent
 @ActivityScope
 interface ActivityComponent {
 
-    fun newPresentationComponent(presentationModule: PresentationModule): PresentationComponent
+    fun newPresentationComponent(
+        presentationModule: PresentationModule,
+        useCaseModule: UseCaseModule
+    ): PresentationComponent
 }

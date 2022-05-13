@@ -20,8 +20,5 @@ class PresentationModule {
     fun dialogsNavigator(fragmentManager: FragmentManager) = DialogsNavigator(fragmentManager)
 
     @Provides
-    fun fetchQuestionsUseCase(stackoverflowApi: StackoverflowApi): FetchQuestionsUseCase = FetchQuestionsUseCaseImpl(stackoverflowApi)
-
-    @Provides
     fun viewMvcFactory(layoutInflater: LayoutInflater) = ViewMvcFactory(layoutInflater)
 }

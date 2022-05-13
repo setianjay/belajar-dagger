@@ -9,6 +9,7 @@ import com.techyourchance.dagger2course.screens.common.screens.ScreensNavigator
 import dagger.Component
 
 @Component(modules = [ActivityModule::class])
+@ActivityScope
 interface ActivityComponent {
 
     fun activity(): AppCompatActivity

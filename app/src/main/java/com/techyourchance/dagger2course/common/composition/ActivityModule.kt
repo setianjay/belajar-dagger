@@ -33,6 +33,7 @@ class ActivityModule(
     fun stackoverflowApi(): StackoverflowApi = appComponent.stackoverflowApi()
 
     @Provides
+    @ActivityScope
     fun screensNavigator(activity: AppCompatActivity): ScreensNavigator = ScreensNavigator(activity)
 
 }

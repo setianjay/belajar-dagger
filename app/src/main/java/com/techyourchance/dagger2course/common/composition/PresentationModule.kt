@@ -1,8 +1,6 @@
 package com.techyourchance.dagger2course.common.composition
 
-import android.app.Application
 import android.view.LayoutInflater
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.techyourchance.dagger2course.data.usecase.FetchQuestionsUseCase
 import com.techyourchance.dagger2course.data.usecase.FetchQuestionsUseCaseImpl
@@ -16,22 +14,7 @@ import dagger.Provides
  * this class provide service presentation scope
  * */
 @Module
-class PresentationModule(private val activityComponent: ActivityComponent) {
-
-    @Provides
-    fun activity(): AppCompatActivity = activityComponent.activity()
-
-    @Provides
-    fun application(): Application = activityComponent.application()
-
-    @Provides
-    fun fragmentManager() = activityComponent.fragmentManager()
-
-    @Provides
-    fun layoutInflater() = activityComponent.layoutInflater()
-
-    @Provides
-    fun stackoverflowApi() = activityComponent.stackoverflowApi()
+class PresentationModule {
 
     @Provides
     fun dialogsNavigator(fragmentManager: FragmentManager) = DialogsNavigator(fragmentManager)
@@ -41,7 +24,4 @@ class PresentationModule(private val activityComponent: ActivityComponent) {
 
     @Provides
     fun viewMvcFactory(layoutInflater: LayoutInflater) = ViewMvcFactory(layoutInflater)
-
-    @Provides
-    fun screensNavigator() = activityComponent.screensNavigator()
 }

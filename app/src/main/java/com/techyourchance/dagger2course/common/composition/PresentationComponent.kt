@@ -4,7 +4,8 @@ import com.techyourchance.dagger2course.screens.questiondetails.QuestionDetailsA
 import com.techyourchance.dagger2course.screens.questionslist.QuestionsListActivity
 import dagger.Component
 
-@Component(modules = [PresentationModule::class])
+@Component(modules = [PresentationModule::class], dependencies = [ActivityComponent::class])
+@PresentationScope
 interface PresentationComponent {
 
     fun inject(activity: QuestionsListActivity)

@@ -9,17 +9,11 @@ open class BaseActivity: AppCompatActivity() {
     private val appComponent: AppComponent get() = (application as MyApplication).appComponent
 
     private val activityComponent: ActivityComponent by lazy {
-        DaggerActivityComponent.builder()
-            .appComponent(appComponent)
-            .activityModule(ActivityModule(this))
-            .build()
+        appComponent.newActivityComponent(ActivityModule(this))
     }
 
     private val presentationComponent: PresentationComponent by lazy {
-        DaggerPresentationComponent.builder()
-            .activityComponent(activityComponent)
-            .presentationModule(PresentationModule())
-            .build()
+       activityComponent.newPresentationComponent(PresentationModule())
     }
 
     protected val injector: PresentationComponent get() = presentationComponent

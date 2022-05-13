@@ -8,7 +8,5 @@ import dagger.Component
 @AppScope
 interface AppComponent {
 
-    fun application(): Application
-
-    fun stackoverflowApi(): StackoverflowApi
+    fun newActivityComponent(activityModule: ActivityModule): ActivityComponent
 }

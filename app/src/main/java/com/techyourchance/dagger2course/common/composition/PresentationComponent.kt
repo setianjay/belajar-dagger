@@ -2,9 +2,9 @@ package com.techyourchance.dagger2course.common.composition
 
 import com.techyourchance.dagger2course.screens.questiondetails.QuestionDetailsActivity
 import com.techyourchance.dagger2course.screens.questionslist.QuestionsListActivity
-import dagger.Component
+import dagger.Subcomponent
 
-@Component(modules = [PresentationModule::class], dependencies = [ActivityComponent::class])
+@Subcomponent(modules = [PresentationModule::class])
 @PresentationScope
 interface PresentationComponent {
 

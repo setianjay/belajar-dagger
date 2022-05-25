@@ -11,11 +11,7 @@ import dagger.Provides
  * this class provide service activity scope
  * */
 @Module
-class ActivityModule(
-    private val activity: AppCompatActivity
-) {
-    @Provides
-    fun activity(): AppCompatActivity = activity
+object ActivityModule {
 
     @Provides
     fun fragmentManager(activity: AppCompatActivity): FragmentManager = activity.supportFragmentManager

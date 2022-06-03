@@ -10,6 +10,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.techyourchance.dagger2course.R
 import com.techyourchance.dagger2course.databinding.LayoutQuestionsListBinding
 import com.techyourchance.dagger2course.questions.Question
+import com.techyourchance.dagger2course.screens.common.toolbar.MyToolbar
 import com.techyourchance.dagger2course.screens.common.viewmvc.BaseViewMvc
 
 class QuestionsListViewMvc(
@@ -21,10 +22,12 @@ class QuestionsListViewMvc(
     interface Listener {
         fun onRefreshClicked()
         fun onQuestionClicked(question: Question)
+        fun onViewModelClicked()
     }
 
     private val recyclerView: RecyclerView = binding.recycler
     private val swipeRefreshLayout: SwipeRefreshLayout = binding.swipeRefresh
+    private val toolbar: MyToolbar = binding.toolbar
     private val questionsAdapter: QuestionsAdapter = QuestionsAdapter { question: Question ->
         for (listener in listeners) {
             listener.onQuestionClicked(question)
@@ -41,6 +44,12 @@ class QuestionsListViewMvc(
         swipeRefreshLayout.setOnRefreshListener {
             for (listener in listeners) {
                 listener.onRefreshClicked()
+            }
+        }
+
+        toolbar.setViewModelListener {
+            for (listener in listeners){
+                listener.onViewModelClicked()
             }
         }
     }

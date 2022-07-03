@@ -4,14 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.techyourchance.dagger2course.data.Result
 import com.techyourchance.dagger2course.screens.common.activities.BaseActivity
 import com.techyourchance.dagger2course.screens.common.viewmodels.MyViewModelFactory
 import com.techyourchance.dagger2course.screens.common.viewmvc.ViewMvcFactory
 import javax.inject.Inject
-import kotlin.reflect.KClass
 
 class ViewModelActivity : BaseActivity() {
     @Inject
@@ -21,18 +19,20 @@ class ViewModelActivity : BaseActivity() {
 
     private lateinit var viewModelViewMvc: ViewModelViewMvc
     private lateinit var myViewModel: MyViewModel
+    private lateinit var myViewModel2: MyViewModel2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         injector.inject(this)
         super.onCreate(savedInstanceState)
         viewModelViewMvc = viewMvcFactory.newViewModelViewMvc(null)
         setContentView(viewModelViewMvc.rootView)
-        myViewModel = ViewModelProvider(this, viewModelFactory).get(MyViewModel::class.java)
+        myViewModel = ViewModelProvider(this, viewModelFactory)[MyViewModel::class.java]
+        myViewModel2 = ViewModelProvider(this, viewModelFactory)[MyViewModel2::class.java]
         setupObserve()
     }
 
     private fun setupObserve() {
-        myViewModel.questionsList.observe(this) {
+        myViewModel2.questionsList.observe(this) {
             val message = when (it) {
                 is Result.Success -> {
                     val dataSize = it.data.size

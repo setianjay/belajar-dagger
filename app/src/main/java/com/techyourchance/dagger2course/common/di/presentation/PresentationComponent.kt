@@ -1,4 +1,4 @@
-package com.techyourchance.dagger2course.common.composition
+package com.techyourchance.dagger2course.common.di.presentation
 
 import com.techyourchance.dagger2course.screens.questiondetails.QuestionDetailsActivity
 import com.techyourchance.dagger2course.screens.questionslist.QuestionsListActivity

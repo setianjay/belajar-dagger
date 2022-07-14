@@ -1,4 +1,4 @@
-package com.techyourchance.dagger2course.common.composition
+package com.techyourchance.dagger2course.common.di.presentation
 
 import com.techyourchance.dagger2course.data.usecase.FetchQuestionsUseCase
 import com.techyourchance.dagger2course.data.usecase.FetchQuestionsUseCaseImpl

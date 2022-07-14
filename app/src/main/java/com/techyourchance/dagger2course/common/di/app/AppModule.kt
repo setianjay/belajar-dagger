@@ -1,4 +1,4 @@
-package com.techyourchance.dagger2course.common.composition
+package com.techyourchance.dagger2course.common.di.app
 
 import android.app.Application
 import com.techyourchance.dagger2course.Constants

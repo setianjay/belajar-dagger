@@ -1,6 +1,9 @@
-package com.techyourchance.dagger2course.common.composition
+package com.techyourchance.dagger2course.common.di.activity
 
 import androidx.appcompat.app.AppCompatActivity
+import com.techyourchance.dagger2course.common.di.presentation.PresentationComponent
+import com.techyourchance.dagger2course.common.di.presentation.PresentationModule
+import com.techyourchance.dagger2course.common.di.presentation.UseCaseModule
 import dagger.BindsInstance
 import dagger.Subcomponent
 

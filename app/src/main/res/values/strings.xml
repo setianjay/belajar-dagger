@@ -3,4 +3,6 @@
     <string name="server_error_dialog_title">Server Error</string>
     <string name="server_error_dialog_message">Communication with the server failed</string>
     <string name="server_error_dialog_button_caption">OK</string>
+    <string name="view_model">View Model</string>
+    <string name="welcome_in_view_model_screen">Welcome in View Model Screen</string>
 </resources>
